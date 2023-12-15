@@ -18,7 +18,7 @@ final ToDoService _toDoService = ToDoService();
   Widget build(BuildContext context) {
     return Scaffold(
      
-      backgroundColor: Colors.grey.shade400,
+      backgroundColor:Theme.of(context).colorScheme.background,
       body: FutureBuilder(
         future: _toDoService.getAllTodos(),
         builder:(BuildContext context,AsyncSnapshot<List<ToDoItem>> snapshot){
@@ -26,7 +26,7 @@ final ToDoService _toDoService = ToDoService();
             return ShowPage();
           }
           else{
-            return CircularProgressIndicator();
+            return Visibility(visible: false,child: CircularProgressIndicator());
           }
 
         } ,

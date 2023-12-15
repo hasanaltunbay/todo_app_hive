@@ -11,6 +11,9 @@ class ShowPage extends StatefulWidget {
 }
 
 class _ShowPageState extends State<ShowPage> {
+
+   final themeBox = Hive.box('themeBox');
+
   final ToDoService _toDoService = ToDoService();
 
   final TextEditingController tfTitle = TextEditingController();
@@ -29,7 +32,7 @@ class _ShowPageState extends State<ShowPage> {
   final TextEditingController editTfSubtitle = TextEditingController();
 
   editTfTitle.text = item?.title ?? '';
-editTfSubtitle.text = item?.subtitle ?? '';
+  editTfSubtitle.text = item?.subtitle ?? '';
     return showDialog(
         context: context,
         builder: (context) {
@@ -69,14 +72,24 @@ editTfSubtitle.text = item?.subtitle ?? '';
 
   @override
   Widget build(BuildContext context) {
+    bool isDarkMode = themeBox.get('darkMode') ?? false;
     return Scaffold(
       appBar: AppBar(
+        leading: Switch(
+                      value: isDarkMode,
+                      onChanged: (value) {
+                        setState(() {
+                          themeBox.put('darkMode', value);
+                        });
+                      },
+                    ),
+        
         title: Text(
           "TODO",
           style: TextStyle(color: Colors.white),
         ),
         centerTitle: true,
-        backgroundColor: Colors.deepOrange,
+       
       ),
       body: ValueListenableBuilder(
         valueListenable: Hive.box<ToDoItem>('todoBox').listenable(),
@@ -112,7 +125,7 @@ editTfSubtitle.text = item?.subtitle ?? '';
                         },
                         icon: Icon(
                           Icons.delete,
-                          color: Colors.deepOrange,
+                          
                         )),
                     IconButton(
                         onPressed: () {
@@ -133,7 +146,7 @@ editTfSubtitle.text = item?.subtitle ?? '';
         },
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.deepOrange,
+      backgroundColor: Theme.of(context).colorScheme.primary,
         child: Icon(
           Icons.add,
           color: Colors.white,
@@ -182,10 +195,9 @@ editTfSubtitle.text = item?.subtitle ?? '';
                       },
                       child: Text(
                         "Add",
-                        style: TextStyle(color: Colors.white),
+                       
                       ),
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.deepOrange),
+                      
                     ),
                   ],
                 );

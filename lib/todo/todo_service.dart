@@ -7,7 +7,9 @@ class ToDoService{
 
 final String _boxName = "todoBox";
 
+
 Future<Box<ToDoItem>> get _box async => await Hive.openBox<ToDoItem>(_boxName);
+
 
 Future<void> addItem (ToDoItem toDoItem) async {
 
@@ -36,7 +38,6 @@ Future<void> updateIsCompleted(int index,ToDoItem toDoItem) async {
   toDoItem.isCompleted = !toDoItem.isCompleted;
 
   await box.putAt(index, toDoItem);
-
 }
 
 Future<void> updateTodo(int index,ToDoItem toDoItem) async{
@@ -44,7 +45,4 @@ Future<void> updateTodo(int index,ToDoItem toDoItem) async{
 
   box.putAt(index, toDoItem);
 }
-
-
-
 }
