@@ -15,4 +15,4 @@
 
 <h3>Architecture and Technologies</h3>
 
-Hive:Hive is a library specifically developed for Flutter, serving as a local database management system.
+Hive: Hive is a library specifically developed for Flutter, serving as a local database management system.
