@@ -11,3 +11,8 @@
 <img src=https://github.com/hasanaltunbay/todo_app_hive/assets/132913817/a19b99ff-0bd6-47ca-bcaa-2467a620fd8a width="200" height="400" />
 
 <img src=https://github.com/hasanaltunbay/todo_app_hive/assets/132913817/26c012d5-c1c6-4304-8095-2a4575dd1263 width="200" height="400" />
+
+
+<h3>Architecture and Technologies</h3>
+
+Hive:Hive is a library specifically developed for Flutter, serving as a local database management system.
